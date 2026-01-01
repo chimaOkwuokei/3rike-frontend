@@ -43,7 +43,7 @@ const formSchema = z.object({
 export default function CreateAccountForm() {
     const [currentTab, setCurrentTab] = useState(0);
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
+    const [loading, ] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showPin, setShowPin] = useState(false);
 
