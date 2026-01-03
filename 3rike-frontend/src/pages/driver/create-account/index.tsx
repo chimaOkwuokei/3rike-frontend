@@ -108,6 +108,7 @@ export default function CreateAccountForm() {
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
         console.log("Submitted Data:", data);
+        navigate("/driver");
     };
 
 

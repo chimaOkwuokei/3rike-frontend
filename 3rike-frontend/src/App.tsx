@@ -1,11 +1,11 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Layout from "@/components/ui/layout";
-import { CreateAccountForm, ForgotPasswordEmailForm, ForgotPasswordPhoneForm, Landing, LoginForm, NoMatch, Onboarding, } from "./pages";
+import { CreateAccountForm, ForgotPasswordEmailForm, ForgotPasswordPhoneForm, Landing, LoginForm, NoMatch, Onboarding, DriverDashboard, VerifyAccountForm, VerificationSuccess, VerificationFailed, } from "./pages";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div style={{ fontFamily: "Geist" }}>
         <Routes>
 
@@ -21,6 +21,16 @@ function App() {
             <Route path="/" element={<Landing />} />
           </Route>
 
+          {/* Driver */}
+          <Route path="/driver">
+            <Route index element={<DriverDashboard />} />
+            <Route path="verification" element={<VerifyAccountForm />} />
+            <Route path="verification-success" element={<VerificationSuccess />} />
+            <Route path="verification-failed" element={<VerificationFailed/>} />
+            <Route path="*" element={<NoMatch />} />
+          </Route>
+
+
           {/* Using path="*"" means "match anything", so this route
           acts like a catch-all for URLs that we don't have explicit
           routes for. */}
@@ -28,7 +38,7 @@ function App() {
 
         </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

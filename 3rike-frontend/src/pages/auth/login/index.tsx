@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import pin from "@/assets/pin.svg";
 // import back from "@/assets/back.svg";
 // import warning from "@/assets/warning.svg";
@@ -27,7 +27,7 @@ const formSchema = z.object({
 });
 
 export default function LoginForm() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [loading,] = useState(false);
     const [showPin, setShowPin] = useState(false);
 
@@ -59,6 +59,7 @@ export default function LoginForm() {
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
         console.log("Submitted Data:", data);
+         navigate("/driver");
     };
 
 

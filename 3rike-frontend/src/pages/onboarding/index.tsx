@@ -99,35 +99,38 @@ export default function Onboarding() {
                 </div>
             </div>
 
-            {/* Text */}
-            <div className="text-center space-y-3 mb-8 px-2">
-                <h1 className="text-xl md:text-2xl font-extrabold text-black">
-                    {screenData.title}
-                </h1>
-                <p className="text-gray-500 text-sm md:text-base leading-relaxed">
-                    {screenData.description}
-                </p>
-            </div>
+            <div className="flex flex-col">
+                {/* Text */}
+                <div className="text-center space-y-3 mb-8 px-2">
+                    <h1 className="text-xl md:text-2xl font-extrabold text-black">
+                        {screenData.title}
+                    </h1>
+                    <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+                        {screenData.description}
+                    </p>
+                </div>
 
-            {/* Footer */}
-            <div className="mt-auto flex flex-col items-center gap-4">
-                <Button
-                    onClick={() => navigate("/create-account-rider")}
-                    className="w-full py-6 rounded-xl bg-[#01C259] hover:bg-[#019f4a] text-white font-bold text-lg shadow-none"
-                >
-                    Create account
-                </Button>
-
-                <div className="text-sm text-gray-500 font-medium">
-                    Already have an account?{" "}
-                    <button
-                        onClick={() => navigate("/login")}
-                        className="text-[#01C259] font-bold hover:underline"
+                {/* Footer */}
+                <div className="mt-auto flex flex-col items-center gap-4">
+                    <Button
+                        onClick={() => navigate("/create-account-rider")}
+                        className="w-full py-6 rounded-xl bg-[#01C259] hover:bg-[#019f4a] text-white font-bold text-lg shadow-none"
                     >
-                        Log in
-                    </button>
+                        Create account
+                    </Button>
+
+                    <div className="text-sm text-gray-500 font-medium">
+                        Already have an account?{" "}
+                        <button
+                            onClick={() => navigate("/login")}
+                            className="text-[#01C259] font-bold hover:underline"
+                        >
+                            Log in
+                        </button>
+                    </div>
                 </div>
             </div>
+
         </div>
     );
 }
