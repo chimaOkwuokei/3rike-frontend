@@ -20,7 +20,7 @@ export default function DriverDashboard() {
   return (
     <div className="min-h-screen bg-white flex justify-center">
       {/* Mobile Frame Container */}
-      <div className="w-full max-w-100 bg-white shadow-2xl overflow-hidden min-h-200 relative ">
+      <div className="w-full max-w-100 bg-white shadow-2xl overflow-hidden min-h-200 relative pb-10">
 
         {/* Header Profile */}
         <div className="px-6 flex items-center justify-between pt-6 mb-4">
