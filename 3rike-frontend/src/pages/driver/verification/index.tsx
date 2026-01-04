@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -50,6 +50,25 @@ export default function VerifyAccountForm() {
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = React.useState(false);
 
+    // for page 3 of the verificiation
+    const cameraInputRef = useRef<HTMLInputElement>(null);
+    const galleryInputRef = useRef<HTMLInputElement>(null);
+
+    const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            console.log("File selected:", file.name); // Debugging
+
+            form.setValue("selfieImage", file, {
+                shouldValidate: true,
+                shouldDirty: true,
+                shouldTouch: true,
+            });
+
+            // Reset value so the same file can be selected again if needed
+            e.target.value = '';
+        }
+    };
     // Initialize form
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
@@ -163,8 +182,7 @@ export default function VerifyAccountForm() {
                     <input
                         ref={inputRef}
                         type="file"
-                        accept="image/*"
-                        capture="environment"
+                        accept="image/*,application/pdf"
                         className="hidden"
                         onChange={handleFileChange}
                     />
@@ -538,58 +556,43 @@ export default function VerifyAccountForm() {
                                     </div>
                                 </div>
 
-                                <div className="space-y-6 mt-auto">
-                                    {/* Camera Button */}
-                                    <label className="block w-full">
-                                        <div className="w-full bg-[#01C259] hover:bg-[#00a049] active:bg-[#00a049] text-white py-4 rounded-xl font-light text-center cursor-pointer transition-colors">
-                                            Take Live selfie
-                                        </div>
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            capture="user" // Front camera for selfies
-                                            className="hidden"
-                                            onChange={(e) => {
-                                                const file = e.target.files?.[0];
-                                                console.log('Camera file selected:', file); // Debug log
-                                                if (file) {
-                                                    form.setValue("selfieImage", file, {
-                                                        shouldValidate: true,
-                                                        shouldDirty: true,
-                                                        shouldTouch: true
-                                                    });
-                                                    // Reset input so same file can be selected again
-                                                    e.target.value = '';
-                                                }
-                                            }}
-                                        />
-                                    </label>
+                                <div className="space-y-3 mt-auto">
 
-                                    {/* Gallery Button */}
-                                    <label className="block w-full">
-                                        <div className="w-full border border-[#01C259] text-[#01C259] bg-white hover:bg-green-50 active:bg-green-100 py-4 rounded-xl font-light text-center cursor-pointer transition-colors">
-                                            Upload from existing Photo
-                                        </div>
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            className="hidden"
-                                            onChange={(e) => {
-                                                const file = e.target.files?.[0];
-                                                console.log('Gallery file selected:', file); // Debug log
-                                                if (file) {
-                                                    form.setValue("selfieImage", file, {
-                                                        shouldValidate: true,
-                                                        shouldDirty: true,
-                                                        shouldTouch: true
-                                                    });
-                                                    // Reset input so same file can be selected again
-                                                    e.target.value = '';
-                                                }
-                                            }}
-                                        />
-                                    </label>
+                                    {/* --- CAMERA BUTTON --- */}
+                                    <div
+                                        onClick={() => cameraInputRef.current?.click()}
+                                        className="w-full bg-[#01C259] hover:bg-[#00a049] active:bg-[#00a049] text-white py-4 rounded-xl font-light text-center cursor-pointer transition-colors select-none"
+                                    >
+                                        Take Live selfie
+                                    </div>
 
+                                    {/* Hidden Camera Input - Linked via Ref */}
+                                    <input
+                                        ref={cameraInputRef}
+                                        type="file"
+                                        accept="image/*"
+                                        capture="user" // Forces front camera
+                                        className="hidden"
+                                        onChange={handleFileSelect}
+                                    />
+
+
+                                    {/* --- GALLERY BUTTON --- */}
+                                    <div
+                                        onClick={() => galleryInputRef.current?.click()}
+                                        className="w-full border border-[#01C259] text-[#01C259] bg-white hover:bg-green-50 active:bg-green-100 py-4 rounded-xl font-light text-center cursor-pointer transition-colors select-none"
+                                    >
+                                        Upload from existing Photo
+                                    </div>
+
+                                    {/* Hidden Gallery Input - Linked via Ref */}
+                                    <input
+                                        ref={galleryInputRef}
+                                        type="file"
+                                        accept="image/*" // No capture attribute means Gallery/File Picker
+                                        className="hidden"
+                                        onChange={handleFileSelect}
+                                    />
 
                                     <FormMessage className="text-center">
                                         {form.formState.errors.selfieImage?.message?.toString()}

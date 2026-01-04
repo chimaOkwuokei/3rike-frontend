@@ -20,7 +20,7 @@ export default function DriverDashboard() {
   return (
     <div className="min-h-screen bg-white flex justify-center">
       {/* Mobile Frame Container */}
-      <div className="w-full max-w-100 bg-white shadow-2xl overflow-hidden min-h-200 relative pb-24">
+      <div className="w-full max-w-100 bg-white shadow-2xl overflow-hidden min-h-200 relative ">
 
         {/* Header Profile */}
         <div className="px-6 flex items-center justify-between pt-6 mb-4">
@@ -55,7 +55,7 @@ export default function DriverDashboard() {
 
               <div className="flex flex-row justify-between mb-6">
                 <h1 className="text-4xl font-bold ">
-                  {changeCurrency ? "$ 0.10" : "₵ 0.10"}
+                  {changeCurrency ? "$ 0.00" : "₵ 0.00"}
                 </h1>
 
                 {/* Custom Toggle Switch */}
@@ -204,7 +204,7 @@ export default function DriverDashboard() {
         </div>
 
         {/* BOTTOM NAVIGATION BAR */}
-        <div className="absolute w-full flex items-center justify-between px-6 pt-1">
+        <div className="absolute w-full flex items-center justify-between px-6 -mt-7">
           {/* Left pill navigation */}
           <div className="bg-white rounded-full shadow-lg px-1 py-1 flex items-center -space-x-2">
             <Button
@@ -244,12 +244,12 @@ export default function DriverDashboard() {
           <Button
             variant="link"
             size="icon"
-            className="hover:bg-transparent text-gray-400"
+            className="hover:bg-transparent w-full h-full text-gray-400"
           >
             <img
               src="/add.svg" // ⚠️ Export the green background from your design and put it here
               alt="add"
-              className=" w-full h-full"
+              className="ml-25 w-15 h-15"
             />
           </Button>
         </div>
