@@ -101,7 +101,7 @@ export default function LoanDashboard() {
 
 
     return (
-        <div className="min-h-screen bg-white flex justify-center font-sans">
+        <div className="min-h-screen bg-white flex justify-center">
             {/* Mobile Frame Container */}
             <div className="w-full max-w-md bg-white shadow-2xl overflow-hidden min-h-screen relative pb-10">
 
@@ -162,8 +162,8 @@ export default function LoanDashboard() {
                             <div className="relative flex w-full items-center justify-center">
 
                                 {/* Amount Text */}
-                                <h1 className="text-4xl font-semibold text-white drop-shadow-sm">
-                                    {changeCurrency ? "$ 1,500" : "₵ 16,000"}
+                                <h1 className="text-4xl font-bold ">
+                                    {changeCurrency ? "$ 1,500.00" : "₵ 16,000.00"}
                                 </h1>
 
                                 {/* Custom Toggle Switch - Positioned Absolute Right */}

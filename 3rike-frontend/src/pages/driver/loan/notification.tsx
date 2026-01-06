@@ -14,7 +14,7 @@ export default function LoanNotification() {
 
     // --- TOGGLE STATE FOR DEVELOPMENT ---
     // Change this to false to see your original "Empty" state
-    const [hasNotifications, _setHasNotifications] = useState(false);
+    const [hasNotifications, _setHasNotifications] = useState(true);
 
     // --- MOCK DATA BASED ON YOUR IMAGE ---
     const notificationGroups = [
@@ -63,9 +63,9 @@ export default function LoanNotification() {
     const getCardStyle = (type: string) => {
         switch (type) {
             case "success":
-                return "bg-green-50 border-green-100";
+                return "bg-[#E6F6E9]";
             case "error":
-                return "bg-red-50 border-red-100";
+                return "bg-[#FFE9E9]";
             default:
                 return "bg-white border-gray-100 shadow-sm";
         }
@@ -96,21 +96,17 @@ export default function LoanNotification() {
         }
         if (item.iconType === "promo") {
             return (
-                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                    <Smile size={24} />
-                </div>
+                <img src="/innocent.svg" alt="Back" className="w-10 h-10" />
             );
         }
         // Default Neutral
         return (
-            <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-emerald-500">
-                <Sparkles size={20} fill="currentColor" />
-            </div>
+            <img src="/sparkles.svg" alt="Back" className="w-10 h-10" />
         );
     };
 
     return (
-        <div className="min-h-screen bg-gray-50/50 flex flex-col font-sans">
+        <div className="min-h-screen bg-gray-50/50 flex flex-col">
 
             {/* --- HEADER SECTION --- */}
             <div className="relative flex items-center justify-center px-6 py-6 w-full pt-10 bg-white">
@@ -170,7 +166,7 @@ export default function LoanNotification() {
                                             {/* Content */}
                                             <div className="flex-1">
                                                 <div className="flex justify-between items-start">
-                                                    <h4 className={`font-bold text-sm mb-1 ${item.type === 'error' ? 'text-red-600' : 'text-gray-900'}`}>
+                                                    <h4 className={`font-semibold text-sm mb-1 ${item.type === 'error' ? 'text-red-600' : 'text-gray-900'}`}>
                                                         {item.title}
                                                     </h4>
                                                     <span className="text-xs text-gray-400 whitespace-nowrap ml-2">
