@@ -6,7 +6,7 @@ export default function VerificationFailed() {
   const navigate = useNavigate();
 
   const handleVerificationFailed = () => {
-    navigate('/driver/retry-verification')
+    navigate('/driver/verification/retry')
   };
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6">

@@ -72,9 +72,9 @@ export default function VerificationFailedForm() {
             // Navigate based on success/failure logic (simulated here)
             const isSuccess = true;
             if (isSuccess) {
-                navigate("/driver/verification-success");
+                navigate("/driver/verification/success");
             } else {
-                navigate("/driver/verification-failed");
+                navigate("/driver/verification/failed");
             }
         }, 2000);
     };

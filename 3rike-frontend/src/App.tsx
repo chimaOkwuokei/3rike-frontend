@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Layout from "@/components/ui/layout";
-import { CreateAccountForm, ForgotPasswordEmailForm, ForgotPasswordPhoneForm, Landing, LoginForm, NoMatch, Onboarding, DriverDashboard, VerifyAccountForm, VerificationSuccess, VerificationFailed, VerificationFailedForm, LoanDashboard, LoanRequestSuccess, LoanNotification, } from "./pages";
+import { CreateAccountForm, ForgotPasswordEmailForm, ForgotPasswordPhoneForm, Landing, LoginForm, NoMatch, Onboarding, DriverDashboard, VerifyAccountForm, VerificationSuccess, VerificationFailed, VerificationFailedForm, LoanDashboard, LoanRequestSuccess, LoanNotification, SavingsOnboarding, SavingsDashboard, Loan, Savings, Verification, SavingsTargetDashboard, SavingsTargetForm, } from "./pages";
 
 function App() {
   return (
@@ -24,15 +24,33 @@ function App() {
           {/* Driver */}
           <Route path="/driver">
             <Route index element={<DriverDashboard />} />
-            <Route path="verification" element={<VerifyAccountForm />} />
-            <Route path="verification-success" element={<VerificationSuccess />} />
-            <Route path="verification-failed" element={<VerificationFailed/>} />
-            <Route path="retry-verification" element={<VerificationFailedForm/>} />
-            <Route path="loan" element={<LoanDashboard/>} />
-            <Route path="loan-submitted" element={<LoanRequestSuccess/>}/>
-            <Route path="loan-notification" element={<LoanNotification/>}/>
+
+            {/* Verification routes */}
+            <Route path="verification" element={<Verification />}>
+              <Route index element={<VerifyAccountForm />} />
+              <Route path="success" element={<VerificationSuccess />} />
+              <Route path="failed" element={<VerificationFailed />} />
+              <Route path="retry" element={<VerificationFailedForm />} />
+            </Route>
+
+            {/* Loan routes */}
+            <Route path="loan" element={<Loan />}>
+              <Route index element={<LoanDashboard />} />
+              <Route path="submitted" element={<LoanRequestSuccess />} />
+              <Route path="notification" element={<LoanNotification />} />
+            </Route>
+
+            {/* Savings route */}
+            <Route path="savings" element={<Savings />}>
+              <Route index element={<SavingsOnboarding />} />
+              <Route path="dashboard" element={<SavingsDashboard />} />
+              <Route path="target" element={<SavingsTargetDashboard />} />
+              <Route path="create-target" element={<SavingsTargetForm />} />
+            </Route>
+
             <Route path="*" element={<NoMatch />} />
           </Route>
+
 
 
           {/* Using path="*"" means "match anything", so this route

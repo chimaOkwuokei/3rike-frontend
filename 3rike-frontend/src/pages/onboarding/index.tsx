@@ -4,21 +4,25 @@ import { Button } from "@/components/ui/button";
 
 const onboardingData = [
     {
+        image: "/onboarding1.svg",
         title: "Apply and own a 3rike",
         description: "Apply to own a 3rike, get approved in under 48 hours, and start earning daily.",
         color: "bg-[#BBE6C3]", // Light green placeholder color from your image
     },
     {
+        image: "#",
         title: "Savings",
         description: "Save smarter and reach your financial goals with Target Savings and 3rikky Lock Savings.",
         color: "bg-[#7BCD8A]",
     },
     {
+        image: "#",
         title: "Loans",
         description: "Grow your credit score and get loans up to GHS 16,000 with easy, flexible repayment.",
         color: "bg-[#BBE6C3]",
     },
     {
+        image: "#",
         title: "Retail Investment",
         description: "Become a 3rike owner with just GHS 600 and start earning weekly.",
         color: "bg-[#7BCD8A]",
@@ -65,7 +69,7 @@ export default function Onboarding() {
     if (currentScreen === -1) {
         return (
             <div className="fixed inset-0 flex items-center justify-center bg-white">
-                <div className="text-3xl font-bold text-[#01C259]">3rike</div>
+                <img src="/logo.svg" alt="empty" className="w-60 h-60" />
             </div>
         );
     }
@@ -80,9 +84,14 @@ export default function Onboarding() {
         >
 
             {/* Image Section */}
-            <div
-                className={`w-full h-115.5 rounded-4xl ${screenData.color} mb-6`}
-            />
+            <div className={`relative w-full h-115.5 rounded-4xl ${screenData.color} mb-6`}>
+                <img
+                    src={screenData.image}
+                    alt="image"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2"
+                />
+            </div>
+
 
             {/* Pagination */}
             <div className="flex justify-center mb-3">

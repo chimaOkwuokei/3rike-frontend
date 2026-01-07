@@ -35,6 +35,10 @@ export default function DriverDashboard() {
     navigate('/driver/loan')
   };
 
+   const handleSavings = () => {
+    navigate('/driver/savings')
+  };
+
   const handleVerification = () => {
     navigate('/driver/verification')
   };
@@ -138,7 +142,7 @@ export default function DriverDashboard() {
           </div>
 
           {/* 3. VERIFICATION BANNER */}
-          <div className="relative w-full bg-[#1B8036] rounded-2xl p-5 overflow-hidden text-white flex items-center justify-between">
+          <div onClick={handleVerification} className="relative w-full bg-[#1B8036] rounded-2xl p-5 overflow-hidden text-white flex items-center justify-between">
             {/* Abstract Background Pattern (Simulated with SVG) */}
             <img
               src="/verification-banner.svg" // ⚠️ Export the green background from your design and put it here
@@ -170,7 +174,7 @@ export default function DriverDashboard() {
             </div>
 
             <div className="absolute bottom-4 right-4 z-10 w-8 h-8 bg-[#00C258] rounded-full flex items-center justify-center shadow-lg">
-              <Button variant="link" onClick={handleVerification}>
+              <Button variant="link">
                 <img
                   src="/arrow-right.svg" // ⚠️ Export the green background from your design and put it here
                   alt="Card Background"
@@ -183,7 +187,7 @@ export default function DriverDashboard() {
           {/* 4. BOTTOM GRID MENU */}
           <div className="grid grid-cols-2 gap-4">
             {/* Savings */}
-            <div className="bg-white border-3 border-dashed border-gray-100 rounded-2xl p-4 flex flex-col  gap-2 ">
+            <div onClick={handleSavings} className="bg-white border-3 border-dashed border-gray-100 rounded-2xl p-4 flex flex-col  gap-2 ">
               <div className="w-5 h-5 bg-white/20 rounded-lg flex items-center justify-center mb-2 backdrop-blur-md">
                 {/* Icon simulating the scooter/delivery icon */}
                 <img

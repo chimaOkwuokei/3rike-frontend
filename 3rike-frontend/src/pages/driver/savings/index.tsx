@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 
-const Loan = () => {
+const Savings = () => {
   return (
     <div>
-      {/* Loan  UI */}
+      {/* Savings  UI */}
       <Outlet />
     </div>
   );
 };
 
-export default Loan;
+export default Savings;
