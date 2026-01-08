@@ -82,7 +82,7 @@ export default function SavingsOnboarding() {
                                 setCurrentScreen(prev => prev + 1);
                             }
                         }}
-                        className="w-auto py-6 rounded-xl text-[#01C259] hover:bg-[#019f4a] font-light text-lg shadow-none flex items-center gap-0.5"
+                        className="w-auto py-6 rounded-xl text-[#01C259]  font-light text-lg shadow-none flex items-center gap-0.5"
                     >
                         {isLastScreen ? "Continue" : "Next"}
                         <img

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Bell, Home } from "lucide-react";
 
 
 export default function SavingsDashboard() {
@@ -9,6 +11,10 @@ export default function SavingsDashboard() {
 
     const handleTargetSavings = () => {
         navigate('/driver/savings/target')
+    };
+
+    const handleDashboard = () => {
+        navigate('/driver')
     };
     return (
         <div className="min-h-screen bg-white flex justify-center">
@@ -104,6 +110,41 @@ export default function SavingsDashboard() {
                         <p className="text-xs text-[#95959533] font-extrabold text-center">
                             Select any Plans
                         </p>
+                    </div>
+
+                    {/* BOTTOM NAVIGATION BAR */}
+                    <div className="absolute bottom-0 w-full flex items-center justify-between pb-6">
+                        {/* Left pill navigation */}
+                        <div className="bg-white rounded-full shadow-lg px-1 py-1 flex items-center -space-x-2">
+                            <Button
+                                onClick={handleDashboard}
+                                variant="link"
+                                size="icon"
+                                className="hover:bg-transparent text-black"
+                            >
+                                <Home className="w-6 h-6 fill-current" />
+                            </Button>
+
+                            <Button
+                                variant="link"
+                                size="icon"
+                                className="hover:bg-transparent text-[#909090]"
+                            >
+                                <Bell className="w-6 h-6 fill-current" />
+                            </Button>
+
+                            <Button
+                                variant="link"
+                                size="icon"
+                                className="hover:bg-transparent text-gray-400"
+                            >
+                                <img
+                                    src="/settings.svg" // ⚠️ Export the green background from your design and put it here
+                                    alt="settings"
+                                    className=" w-5 h-5"
+                                />
+                            </Button>
+                        </div>
                     </div>
 
                 </div>

@@ -108,12 +108,33 @@ export default function SavingsTargetForm() {
         }
     };
 
+    const handleSuccess = () => {
+        navigate('/driver/savings/success');
+    };
+
+    const handleTargetSavings = () => {
+        navigate('/driver/savings/target')
+    };
+
+
+    const delay = (ms: number) =>
+        new Promise(resolve => setTimeout(resolve, ms));
+
     const onSubmit = async (data: FormValues) => {
         setLoading(true);
         console.log("Final Goal Data:", data);
-        setTimeout(() => {
-            setLoading(false);
-        }, 2000);
+
+        // 1. Show success
+        handleSuccess();
+
+        // 2. Wait 2 seconds
+        await delay(2000);
+
+        // 3. Then show target savings
+        handleTargetSavings();
+
+        // 4. Stop loading
+        setLoading(false);
     };
 
     return (

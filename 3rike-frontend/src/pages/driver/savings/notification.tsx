@@ -64,7 +64,7 @@ export default function SavingsNotification() {
             case "error":
                 return "bg-[#FFE9E9]";
             default:
-                return "bg-white border-gray-100 shadow-sm";
+                return "bg-white border-none";
         }
     };
 

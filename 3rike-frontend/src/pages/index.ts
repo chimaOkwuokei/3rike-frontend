@@ -22,6 +22,8 @@ import SavingsTargetDashboard from "./driver/savings/target-savings";
 import SavingsTargetForm from "./driver/savings/target-form";
 import SavingsSummary from "./driver/savings/target-summary";
 import SavingsNotification from "./driver/savings/notification";
+import SavingsTargetSuccess from "./driver/savings/target-success";
+import AiDashboard from "./driver/3rikeAi";
 export {
     Landing,
     NoMatch,
@@ -46,5 +48,7 @@ export {
     SavingsTargetDashboard,
     SavingsTargetForm,
     SavingsSummary,
-    SavingsNotification
+    SavingsNotification,
+    SavingsTargetSuccess,
+    AiDashboard
 }

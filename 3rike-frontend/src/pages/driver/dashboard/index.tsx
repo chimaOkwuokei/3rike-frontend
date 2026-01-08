@@ -8,6 +8,9 @@ import {
   Hourglass,
   Home,
   Bell,
+  User,
+  Send,
+  ArrowDown
 } from "lucide-react";
 import DepositModal from "../deposit";
 
@@ -17,8 +20,10 @@ export default function DriverDashboard() {
   const [verificationStatus, setVerificationStatus] = useState<
     "not_started" | "in_progress" | "approved"
   >("not_started");
-  // State to control the modal visibility
+
+  // State to control the modals
   const [isDepositOpen, setIsDepositOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for the overlay menu
 
   useEffect(() => {
     const status = localStorage.getItem("verificationStatus") as
@@ -35,13 +40,17 @@ export default function DriverDashboard() {
     navigate('/driver/loan')
   };
 
-   const handleSavings = () => {
+  const handleSavings = () => {
     navigate('/driver/savings')
   };
 
   const handleVerification = () => {
     navigate('/driver/verification')
   };
+   const handle3rikeAi = () => {
+    navigate('/driver/3rikeAi')
+  };
+
   return (
     <div className="min-h-screen bg-white flex justify-center">
       {/* Mobile Frame Container */}
@@ -97,7 +106,7 @@ export default function DriverDashboard() {
               <div className="flex gap-4">
 
                 <Button
-                  onClick={() => setIsDepositOpen(true)} // <--- Add this trigger
+                  onClick={() => setIsDepositOpen(true)}
                   className="flex-1 bg-transparent hover:bg-white/30 text-white border border-white rounded-full h-12 gap-2 text-sm font-medium backdrop-blur-sm"
                 >
                   <div className="bg-white text-[#00C258] rounded-full p-0.5 w-5 h-5 flex items-center justify-center">
@@ -145,7 +154,7 @@ export default function DriverDashboard() {
           <div onClick={handleVerification} className="relative w-full bg-[#1B8036] rounded-2xl p-5 overflow-hidden text-white flex items-center justify-between">
             {/* Abstract Background Pattern (Simulated with SVG) */}
             <img
-              src="/verification-banner.svg" // ⚠️ Export the green background from your design and put it here
+              src="/verification-banner.svg"
               alt="Card Background"
               className="absolute inset-0 w-full h-full bg-[#1E8A32] object-cover z-0"
             />
@@ -176,7 +185,7 @@ export default function DriverDashboard() {
             <div className="absolute bottom-4 right-4 z-10 w-8 h-8 bg-[#00C258] rounded-full flex items-center justify-center shadow-lg">
               <Button variant="link">
                 <img
-                  src="/arrow-right.svg" // ⚠️ Export the green background from your design and put it here
+                  src="/arrow-right.svg"
                   alt="Card Background"
                   className="absolute inset-0 w-full h-full  object-cover z-0"
                 />
@@ -189,7 +198,6 @@ export default function DriverDashboard() {
             {/* Savings */}
             <div onClick={handleSavings} className="bg-white border-3 border-dashed border-gray-100 rounded-2xl p-4 flex flex-col  gap-2 ">
               <div className="w-5 h-5 bg-white/20 rounded-lg flex items-center justify-center mb-2 backdrop-blur-md">
-                {/* Icon simulating the scooter/delivery icon */}
                 <img
                   src="/piggy.svg"
                   alt="piggy"
@@ -202,7 +210,6 @@ export default function DriverDashboard() {
             {/* Investment */}
             <div className="bg-white border-3 border-dashed border-gray-100 rounded-2xl p-4 flex flex-col gap-2 ">
               <div className="w-5 h-5 bg-white/20 rounded-lg flex items-center justify-center mb-2 backdrop-blur-md">
-                {/* Icon simulating the scooter/delivery icon */}
                 <img
                   src="/invest.svg"
                   alt="invest"
@@ -215,7 +222,6 @@ export default function DriverDashboard() {
             {/* Earn */}
             <div className="bg-white border-3 border-dashed border-gray-100 rounded-2xl p-4 flex flex-col gap-2 ">
               <div className="w-5 h-5 bg-white/20 rounded-lg flex items-center justify-center mb-2 backdrop-blur-md">
-                {/* Icon simulating the scooter/delivery icon */}
                 <img
                   src="/chart.svg"
                   alt="chart"
@@ -228,7 +234,6 @@ export default function DriverDashboard() {
             {/* Loan */}
             <div onClick={handleLoan} className="bg-white border-3 border-dashed border-gray-100 rounded-2xl p-4 flex flex-col gap-2 ">
               <div className="w-5 h-5 bg-white/20 rounded-lg flex items-center justify-center mb-2 backdrop-blur-md">
-                {/* Icon simulating the scooter/delivery icon */}
                 <img
                   src="/loan.svg"
                   alt="loan"
@@ -267,38 +272,74 @@ export default function DriverDashboard() {
               className="hover:bg-transparent text-gray-400"
             >
               <img
-                src="/settings.svg" // ⚠️ Export the green background from your design and put it here
+                src="/settings.svg"
                 alt="settings"
                 className=" w-5 h-5"
               />
             </Button>
           </div>
 
-          {/* Right floating action button */}
-          {/* <Button
-            size="icon"
-            className="bg-[#00C258] hover:bg-[#00a349] rounded-full w-12 h-12 shadow-lg"
-          > */}
+          {/* Right floating action button (TRIGGER) */}
           <Button
             variant="link"
             size="icon"
+            onClick={() => setIsMenuOpen(true)} // Open modal on click
             className="hover:bg-transparent w-full h-full text-gray-400"
           >
             <img
-              src="/add.svg" // ⚠️ Export the green background from your design and put it here
+              src="/add.svg"
               alt="add"
               className="ml-25 w-15 h-15"
             />
           </Button>
         </div>
 
+        {/* --- OVERLAY MODAL --- */}
+        {isMenuOpen && (
+          <div className="absolute inset-0 z-50 bg-[#F3F5F9]/95 backdrop-blur-sm flex flex-col justify-end items-end p-2 animate-in fade-in duration-200">
+
+            {/* Menu Items Container */}
+            <div className="flex flex-col gap-6 mb-10 mr-20 items-start">
+
+              {/* Option 1: Pay 3rike Ai */}
+              <div onClick={handle3rikeAi} className="flex items-center gap-4 cursor-pointer group">
+                <User className="w-6 h-6 text-[#00C259]" fill="#00C259" />
+                <span className="text-lg font-light text-black group-hover:text-gray-700">Pay 3rike Ai</span>
+              </div>
+
+              {/* Option 2: Send */}
+              <div className="flex items-center gap-4 cursor-pointer group">
+                <Send className="w-6 h-6 text-[#9747FF]" fill="#9747FF" />
+                <span className="text-lg font-light text-black group-hover:text-gray-700">Send</span>
+              </div>
+
+              {/* Option 3: Recieve */}
+              <div className="flex items-center gap-4 cursor-pointer group">
+                <ArrowDown className="w-6 h-6 text-[#FF9900]" strokeWidth={3} />
+                <span className="text-lg font-light text-black group-hover:text-gray-700">Recieve</span>
+              </div>
+            </div>
+
+            {/* Close Button (Replaces the Add Button position) */}
+            <Button
+              onClick={() => setIsMenuOpen(false)}
+              className="w-25 h-25 pb-6 bg-transparent rounded-full flex items-end justify-end transition-transform hover:scale-105"
+            >
+              <img
+                src="/subtract.svg"
+                alt="subtract"
+                className="w-15 h-15 -mr-2"
+              />
+            </Button>
+          </div>
+        )}
 
       </div>
 
       {/* deposit modal */}
-      <DepositModal 
-        isOpen={isDepositOpen} 
-        onClose={() => setIsDepositOpen(false)} 
+      <DepositModal
+        isOpen={isDepositOpen}
+        onClose={() => setIsDepositOpen(false)}
       />
     </div>
   );

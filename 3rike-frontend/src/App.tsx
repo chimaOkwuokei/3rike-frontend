@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Layout from "@/components/ui/layout";
-import { CreateAccountForm, ForgotPasswordEmailForm, ForgotPasswordPhoneForm, Landing, LoginForm, NoMatch, Onboarding, DriverDashboard, VerifyAccountForm, VerificationSuccess, VerificationFailed, VerificationFailedForm, LoanDashboard, LoanRequestSuccess, LoanNotification, SavingsOnboarding, SavingsDashboard, Loan, Savings, Verification, SavingsTargetDashboard, SavingsTargetForm, SavingsSummary, SavingsNotification, } from "./pages";
+import { CreateAccountForm, ForgotPasswordEmailForm, ForgotPasswordPhoneForm, Landing, LoginForm, NoMatch, Onboarding, DriverDashboard, VerifyAccountForm, VerificationSuccess, VerificationFailed, VerificationFailedForm, LoanDashboard, LoanRequestSuccess, LoanNotification, SavingsOnboarding, SavingsDashboard, Loan, Savings, Verification, SavingsTargetDashboard, SavingsTargetForm, SavingsSummary, SavingsNotification, SavingsTargetSuccess, AiDashboard, } from "./pages";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
           {/* Driver */}
           <Route path="/driver">
             <Route index element={<DriverDashboard />} />
+            <Route path="3rikeAi" element={<AiDashboard />} />
 
             {/* Verification routes */}
             <Route path="verification" element={<Verification />}>
@@ -48,6 +49,7 @@ function App() {
               <Route path="create-target" element={<SavingsTargetForm />} />
               <Route path="summary" element={<SavingsSummary />} />
               <Route path="notification" element={<SavingsNotification />} />
+              <Route path="success" element={<SavingsTargetSuccess />} />
             </Route>
 
             <Route path="*" element={<NoMatch />} />
