@@ -8,7 +8,7 @@ function PinInput({
 }: {
     value: string;
     onChange: (val: string) => void;
-    show: boolean;
+    show?: boolean;
 }) {
     const inputs = useRef<(HTMLInputElement | null)[]>([]); // Updated type
 

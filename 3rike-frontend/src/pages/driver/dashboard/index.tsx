@@ -47,9 +47,16 @@ export default function DriverDashboard() {
   const handleVerification = () => {
     navigate('/driver/verification')
   };
-   const handle3rikeAi = () => {
+  const handle3rikeAi = () => {
     navigate('/driver/3rikeAi')
   };
+   const handleNotification = () => {
+    navigate('/driver/notification')
+  };
+  const handleWithdraw = () => {
+    navigate('/driver/withdraw')
+  };
+
 
   return (
     <div className="min-h-screen bg-white flex justify-center">
@@ -115,7 +122,7 @@ export default function DriverDashboard() {
                   Deposit
                 </Button>
 
-                <Button className="flex-1 bg-transparent hover:bg-white/30 text-white border border-white rounded-full h-12 gap-2 text-sm font-medium backdrop-blur-sm">
+                <Button onClick={handleWithdraw} className="flex-1 bg-transparent hover:bg-white/30 text-white border border-white rounded-full h-12 gap-2 text-sm font-medium backdrop-blur-sm">
                   <div className="bg-white text-[#00C258] rounded-full p-0.5 w-5 h-5 flex items-center justify-center">
                     <ArrowUpRight size={14} strokeWidth={4} />
                   </div>
@@ -259,6 +266,7 @@ export default function DriverDashboard() {
             </Button>
 
             <Button
+              onClick={handleNotification}
               variant="link"
               size="icon"
               className="hover:bg-transparent text-[#909090]"

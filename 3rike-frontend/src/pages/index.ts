@@ -24,6 +24,12 @@ import SavingsSummary from "./driver/savings/target-summary";
 import SavingsNotification from "./driver/savings/notification";
 import SavingsTargetSuccess from "./driver/savings/target-success";
 import AiDashboard from "./driver/3rikeAi";
+import DriverNotification from "./driver/notification";
+import Withdraw from "./driver/withdraw";
+import SetPinWithdraw from "./driver/withdraw/set-pin";
+import WithdrawBankDetails from "./driver/withdraw/bank-details";
+import WithdrawSendMoney from "./driver/withdraw/send-money";
+
 export {
     Landing,
     NoMatch,
@@ -50,5 +56,10 @@ export {
     SavingsSummary,
     SavingsNotification,
     SavingsTargetSuccess,
-    AiDashboard
+    AiDashboard,
+    DriverNotification,
+    Withdraw,
+    SetPinWithdraw,
+    WithdrawBankDetails,
+    WithdrawSendMoney
 }

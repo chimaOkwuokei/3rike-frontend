@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Layout from "@/components/ui/layout";
-import { CreateAccountForm, ForgotPasswordEmailForm, ForgotPasswordPhoneForm, Landing, LoginForm, NoMatch, Onboarding, DriverDashboard, VerifyAccountForm, VerificationSuccess, VerificationFailed, VerificationFailedForm, LoanDashboard, LoanRequestSuccess, LoanNotification, SavingsOnboarding, SavingsDashboard, Loan, Savings, Verification, SavingsTargetDashboard, SavingsTargetForm, SavingsSummary, SavingsNotification, SavingsTargetSuccess, AiDashboard, } from "./pages";
+import { CreateAccountForm, ForgotPasswordEmailForm, ForgotPasswordPhoneForm, Landing, LoginForm, NoMatch, Onboarding, DriverDashboard, VerifyAccountForm, VerificationSuccess, VerificationFailed, VerificationFailedForm, LoanDashboard, LoanRequestSuccess, LoanNotification, SavingsOnboarding, SavingsDashboard, Loan, Savings, Verification, SavingsTargetDashboard, SavingsTargetForm, SavingsSummary, SavingsNotification, SavingsTargetSuccess, AiDashboard, DriverNotification, Withdraw, SetPinWithdraw, WithdrawBankDetails, WithdrawSendMoney, } from "./pages";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           <Route path="/driver">
             <Route index element={<DriverDashboard />} />
             <Route path="3rikeAi" element={<AiDashboard />} />
-
+            <Route path="notification" element={<DriverNotification />} />
             {/* Verification routes */}
             <Route path="verification" element={<Verification />}>
               <Route index element={<VerifyAccountForm />} />
@@ -39,6 +39,13 @@ function App() {
               <Route index element={<LoanDashboard />} />
               <Route path="submitted" element={<LoanRequestSuccess />} />
               <Route path="notification" element={<LoanNotification />} />
+            </Route>
+
+            {/* Withdraw routes */}
+            <Route path="withdraw" element={<Withdraw />}>
+              <Route index element={<SetPinWithdraw />} />
+              <Route path="bank-details" element={<WithdrawBankDetails />} />
+              <Route path="send-money" element={<WithdrawSendMoney />} />
             </Route>
 
             {/* Savings route */}
