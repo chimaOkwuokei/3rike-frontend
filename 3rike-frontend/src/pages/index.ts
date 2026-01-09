@@ -29,6 +29,7 @@ import Withdraw from "./driver/withdraw";
 import SetPinWithdraw from "./driver/withdraw/set-pin";
 import WithdrawBankDetails from "./driver/withdraw/bank-details";
 import WithdrawSendMoney from "./driver/withdraw/send-money";
+import WithdrawOptions from "./driver/withdraw/options";
 
 export {
     Landing,
@@ -61,5 +62,6 @@ export {
     Withdraw,
     SetPinWithdraw,
     WithdrawBankDetails,
-    WithdrawSendMoney
+    WithdrawSendMoney,
+    WithdrawOptions
 }

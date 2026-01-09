@@ -13,6 +13,7 @@ import {
   ArrowDown
 } from "lucide-react";
 import DepositModal from "../deposit";
+import WithdrawOptions from "../withdraw/options";
 
 export default function DriverDashboard() {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ export default function DriverDashboard() {
 
   // State to control the modals
   const [isDepositOpen, setIsDepositOpen] = useState(false);
+  const [isWithdrawOpen, setIsWithdrawOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for the overlay menu
 
   useEffect(() => {
@@ -53,10 +55,6 @@ export default function DriverDashboard() {
    const handleNotification = () => {
     navigate('/driver/notification')
   };
-  const handleWithdraw = () => {
-    navigate('/driver/withdraw')
-  };
-
 
   return (
     <div className="min-h-screen bg-white flex justify-center">
@@ -122,7 +120,7 @@ export default function DriverDashboard() {
                   Deposit
                 </Button>
 
-                <Button onClick={handleWithdraw} className="flex-1 bg-transparent hover:bg-white/30 text-white border border-white rounded-full h-12 gap-2 text-sm font-medium backdrop-blur-sm">
+                <Button onClick={() => setIsWithdrawOpen(true)} className="flex-1 bg-transparent hover:bg-white/30 text-white border border-white rounded-full h-12 gap-2 text-sm font-medium backdrop-blur-sm">
                   <div className="bg-white text-[#00C258] rounded-full p-0.5 w-5 h-5 flex items-center justify-center">
                     <ArrowUpRight size={14} strokeWidth={4} />
                   </div>
@@ -184,7 +182,7 @@ export default function DriverDashboard() {
 
               <p className="text-sm text-white mt-0.5">
                 {verificationStatus === "not_started" && "Complete Kyc and be eligible."}
-                {verificationStatus === "in_progress" && "Complete Kyc and be eligible."}
+                {verificationStatus === "in_progress" && "Details received. We’ll be in touch soon."}
                 {verificationStatus === "approved" && "Register and own a 3rike"}
               </p>
             </div>
@@ -348,6 +346,12 @@ export default function DriverDashboard() {
       <DepositModal
         isOpen={isDepositOpen}
         onClose={() => setIsDepositOpen(false)}
+      />
+
+       {/* Withdraw modal */}
+      <WithdrawOptions
+        isOpen={isWithdrawOpen}
+        onClose={() => setIsWithdrawOpen(false)}
       />
     </div>
   );
